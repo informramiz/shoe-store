@@ -1,10 +1,10 @@
-package github.informramiz.shoestore
+package github.informramiz.shoestore.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupActionBarWithNavController
+import github.informramiz.shoestore.R
 import github.informramiz.shoestore.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {

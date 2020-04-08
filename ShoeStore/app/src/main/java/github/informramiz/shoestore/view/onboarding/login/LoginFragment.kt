@@ -1,6 +1,5 @@
-package github.informramiz.shoestore.onboarding.login
+package github.informramiz.shoestore.view.onboarding.login
 
-import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater

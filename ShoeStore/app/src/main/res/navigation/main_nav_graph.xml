@@ -5,6 +5,6 @@
     app:startDestination="@id/shoe_list_fragment">
 
     <fragment android:id="@+id/shoe_list_fragment"
-        android:name="github.informramiz.shoestore.shoelist.ShoeListFragment"
+        android:name="github.informramiz.shoestore.view.shoelist.ShoeListFragment"
         android:label="@string/label_shoes"/>
 </navigation>

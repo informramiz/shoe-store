@@ -1,4 +1,4 @@
-package github.informramiz.shoestore.shoelist
+package github.informramiz.shoestore.view.shoelist
 
 
 import android.os.Bundle
@@ -9,7 +9,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import github.informramiz.shoestore.R
-import github.informramiz.shoestore.ShoeListViewModel
+import github.informramiz.shoestore.view.ShoeListViewModel
 import github.informramiz.shoestore.databinding.ShoeListFragmentBinding
 
 class ShoeListFragment : Fragment() {
