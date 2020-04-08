@@ -1,4 +1,4 @@
-package github.informramiz.shoestore.shoelist
+package github.informramiz.shoestore
 
 import androidx.lifecycle.ViewModel
 
