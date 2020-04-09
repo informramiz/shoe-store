@@ -9,7 +9,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import github.informramiz.shoestore.R
-import github.informramiz.shoestore.view.ShoeListViewModel
+import github.informramiz.shoestore.view.MainViewModel
 import github.informramiz.shoestore.databinding.ShoeListFragmentBinding
 
 class ShoeListFragment : Fragment() {
@@ -18,7 +18,7 @@ class ShoeListFragment : Fragment() {
         fun newInstance() = ShoeListFragment()
     }
 
-    private val viewModel: ShoeListViewModel by activityViewModels()
+    private val viewModel: MainViewModel by activityViewModels()
     private lateinit var viewBinding: ShoeListFragmentBinding
 
     override fun onCreateView(
