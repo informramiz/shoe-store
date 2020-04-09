@@ -1,4 +1,4 @@
-package github.informramiz.shoestore.view
+package github.informramiz.shoestore.view.home
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
