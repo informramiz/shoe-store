@@ -3,6 +3,7 @@
     <!--  ShoeList  -->
     <string name="label_shoes">Shoes</string>
     <string name="shoe_list_fragment_welcome_msg">Welcome</string>
+    <string name="shoe_list_fragment_shoe_count_label">Shoe count: %d</string>
 
     <!--  LoginFragment  -->
     <string name="title_fragment_login">Login</string>

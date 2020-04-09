@@ -43,6 +43,9 @@ class ShoeListFragment : Fragment() {
                 else -> findNavController().navigate(R.id.onboarding_nav_graph)
             }
         })
+
+        viewBinding.lifecycleOwner = viewLifecycleOwner
+        viewBinding.viewModel = viewModel
     }
 
     private fun showWelcomeMessage() {
