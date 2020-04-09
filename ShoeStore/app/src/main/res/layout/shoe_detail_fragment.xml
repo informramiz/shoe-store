@@ -1,19 +1,131 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
+
     <data>
+
         <variable
             name="viewModel"
             type="github.informramiz.shoestore.view.shoedetail.ShoeDetailViewModel" />
     </data>
 
-    <LinearLayout
+    <ScrollView
+        android:id="@+id/scrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:gravity="center_horizontal"
-        android:layout_margin="16dp"
+        android:fillViewport="true"
         tools:context=".view.shoedetail.ShoeDetailFragment">
 
-    </LinearLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp">
+
+            <TextView
+                android:id="@+id/textViewName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/shoe_detail_fragment_name_label"
+                app:layout_constraintBottom_toTopOf="@+id/editTextName"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/editTextName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:importantForAutofill="no"
+                android:inputType="textPersonName"
+                app:layout_constraintBottom_toTopOf="@+id/textViewCompany"
+                app:layout_constraintTop_toBottomOf="@+id/textViewName"
+                tools:layout_editor_absoluteX="0dp" />
+
+            <TextView
+                android:id="@+id/textViewCompany"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/shoe_detail_fragment_company_label"
+                app:layout_constraintBottom_toTopOf="@+id/editTextCompany"
+                app:layout_constraintTop_toBottomOf="@+id/editTextName"
+                tools:layout_editor_absoluteX="16dp"
+                android:layout_marginTop="16dp"/>
+
+            <EditText
+                android:id="@+id/editTextCompany"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName"
+                app:layout_constraintBottom_toTopOf="@+id/textViewDescription"
+                app:layout_constraintTop_toBottomOf="@+id/textViewCompany"
+                tools:layout_editor_absoluteX="16dp" />
+
+            <TextView
+                android:id="@+id/textViewDescription"
+                android:layout_width="377dp"
+                android:layout_height="wrap_content"
+                android:text="@string/shoe_detail_fragment_description_label"
+                app:layout_constraintBottom_toTopOf="@+id/editTextDescription"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/editTextCompany"
+                android:layout_marginTop="16dp"/>
+
+            <EditText
+                android:id="@+id/editTextDescription"
+                android:layout_width="377dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName"
+                app:layout_constraintBottom_toTopOf="@+id/textViewSize"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewDescription" />
+
+            <TextView
+                android:id="@+id/textViewSize"
+                android:layout_width="377dp"
+                android:layout_height="wrap_content"
+                android:text="@string/shoe_detail_fragment_size_label"
+                app:layout_constraintBottom_toTopOf="@+id/editTextSize"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/editTextDescription"
+                android:layout_marginTop="16dp"/>
+
+            <EditText
+                android:id="@+id/editTextSize"
+                android:layout_width="377dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="number"
+                app:layout_constraintBottom_toTopOf="@+id/buttonSave"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewSize" />
+
+            <Button
+                android:id="@+id/buttonSave"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:background="@color/colorAccent"
+                android:text="@string/shoe_detail_fragment_save_button"
+                android:textColor="@android:color/white"
+                app:layout_constraintEnd_toStartOf="@+id/buttonCancel"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/editTextSize" />
+
+            <Button
+                android:id="@+id/buttonCancel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/shoe_detail_fragment_cancel_button"
+                app:layout_constraintBaseline_toBaselineOf="@+id/buttonSave"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/buttonSave" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 </layout>

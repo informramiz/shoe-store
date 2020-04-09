@@ -23,4 +23,13 @@
     <string name="instructions_label_instruction2">Click the add button to add new shoe</string>
 
     <string name="label_next">Next</string>
+
+    <!--  ShoeDetailFragment  -->
+    <string name="title_fragment_shoe_detail">Shoe Detail</string>
+    <string name="shoe_detail_fragment_name_label">Name</string>
+    <string name="shoe_detail_fragment_company_label">Company</string>
+    <string name="shoe_detail_fragment_description_label">Description</string>
+    <string name="shoe_detail_fragment_size_label">Size</string>
+    <string name="shoe_detail_fragment_save_button">Save</string>
+    <string name="shoe_detail_fragment_cancel_button">Cancel</string>
 </resources>
