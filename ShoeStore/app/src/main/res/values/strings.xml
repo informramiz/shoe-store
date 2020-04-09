@@ -5,4 +5,9 @@
     <string name="login_label_password">Password</string>
     <string name="login_button_login">Login</string>
     <string name="login_button_register">Register</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="welcome_label_welcome_dear_user">Welcome dear user!</string>
+    <string name="welcome_label_description_text">App will let you see the list of the shoes</string>
 </resources>
