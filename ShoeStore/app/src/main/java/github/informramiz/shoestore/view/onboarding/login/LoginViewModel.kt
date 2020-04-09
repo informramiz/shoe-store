@@ -8,21 +8,30 @@ import github.informramiz.shoestore.model.preferences.ShoePreferences
 import timber.log.Timber
 
 class LoginViewModel(application: Application) : AndroidViewModel(application) {
-    private val _eventUserAuthenticated = MutableLiveData<Boolean>()
-    val eventUserAuthenticated: LiveData<Boolean>
-        get() = _eventUserAuthenticated
+    private val authenticationState = MutableLiveData<AuthenticationState>()
+
+    init {
+        authenticationState.value = ShoePreferences.User.shared.isUserLoggedIn.toAuthenticationState()
+    }
+
+    fun getAuthenticationState(): LiveData<AuthenticationState> {
+        return authenticationState
+    }
+
+    fun userAuthenticationStateUpdated() {
+        authenticationState.value = ShoePreferences.User.shared.isUserLoggedIn.toAuthenticationState()
+    }
 
     fun authenticateUser(userName: String, password: String) {
-        _eventUserAuthenticated.value = true
-//        ShoePreferences.User.shared.isUserLoggedIn = true
-//        ShoePreferences.App.shared.isWelcomeScreenShown = true
+        ShoePreferences.User.shared.isUserLoggedIn = true
+        userAuthenticationStateUpdated()
     }
 
     fun dummy() {
         Timber.d("Dummy called")
     }
 
-    fun userAuthenticationComplete() {
-        _eventUserAuthenticated.value = false
+    private fun Boolean.toAuthenticationState(): AuthenticationState {
+        return if (this) AuthenticationState.AUTHENTICATED else AuthenticationState.UNAUTHENTICATED
     }
 }

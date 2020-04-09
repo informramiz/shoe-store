@@ -14,7 +14,8 @@ import androidx.navigation.fragment.findNavController
 import github.informramiz.shoestore.R
 import github.informramiz.shoestore.view.home.MainViewModel
 import github.informramiz.shoestore.databinding.ShoeListFragmentBinding
-import github.informramiz.shoestore.view.home.AuthenticationState
+import github.informramiz.shoestore.view.onboarding.login.AuthenticationState
+import github.informramiz.shoestore.view.onboarding.login.LoginViewModel
 
 class ShoeListFragment : Fragment() {
 
@@ -23,6 +24,7 @@ class ShoeListFragment : Fragment() {
     }
 
     private val viewModel: MainViewModel by activityViewModels()
+    private val loginViewModel: LoginViewModel by activityViewModels()
     private lateinit var viewBinding: ShoeListFragmentBinding
 
     override fun onCreateView(
@@ -35,7 +37,7 @@ class ShoeListFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel.getAuthenticationState().observe(viewLifecycleOwner, Observer { state ->
+        loginViewModel.getAuthenticationState().observe(viewLifecycleOwner, Observer { state ->
             when(state) {
                 AuthenticationState.AUTHENTICATED -> showWelcomeMessage()
                 else -> findNavController().navigate(R.id.onboarding_nav_graph)

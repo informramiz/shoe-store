@@ -1,14 +1,13 @@
 package github.informramiz.shoestore.view.onboarding.login
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.viewModels
-
-import github.informramiz.shoestore.R
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import github.informramiz.shoestore.databinding.LoginFragmentBinding
 
 class LoginFragment : Fragment() {
@@ -18,19 +17,29 @@ class LoginFragment : Fragment() {
             LoginFragment()
     }
 
-    private val viewModel: LoginViewModel by viewModels()
+    private val viewModel: LoginViewModel by activityViewModels()
     private lateinit var viewBinding: LoginFragmentBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        viewBinding = DataBindingUtil.inflate(layoutInflater, R.layout.login_fragment, container, false)
+        viewBinding = LoginFragmentBinding.inflate(layoutInflater, container, false)
         return viewBinding.root
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewBinding.lifecycleOwner = this
-        viewBinding.loginViewModel = viewModel
+
+        viewModel.getAuthenticationState().observe(viewLifecycleOwner, Observer { state ->
+            when (state) {
+                AuthenticationState.AUTHENTICATED -> {
+                    findNavController().popBackStack()
+                }
+                else -> {
+                    viewBinding.lifecycleOwner = this
+                    viewBinding.loginViewModel = viewModel
+                }
+            }
+        })
     }
 }
