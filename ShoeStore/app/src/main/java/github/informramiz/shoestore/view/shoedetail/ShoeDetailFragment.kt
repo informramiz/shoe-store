@@ -30,5 +30,4 @@ class ShoeDetailFragment : Fragment() {
         viewBinding.lifecycleOwner = viewLifecycleOwner
         viewBinding.viewModel = viewModel
     }
-
 }

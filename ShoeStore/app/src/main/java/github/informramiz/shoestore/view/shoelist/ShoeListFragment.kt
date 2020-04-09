@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import github.informramiz.shoestore.R
@@ -23,8 +24,9 @@ class ShoeListFragment : Fragment() {
         fun newInstance() = ShoeListFragment()
     }
 
-    private val viewModel: MainViewModel by activityViewModels()
+    private val mainViewModel: MainViewModel by activityViewModels()
     private val loginViewModel: LoginViewModel by activityViewModels()
+    private val shoeListViewModel: ShoeListViewModel by viewModels()
     private lateinit var viewBinding: ShoeListFragmentBinding
 
     override fun onCreateView(
@@ -45,7 +47,15 @@ class ShoeListFragment : Fragment() {
         })
 
         viewBinding.lifecycleOwner = viewLifecycleOwner
-        viewBinding.viewModel = viewModel
+        viewBinding.mainViewModel = mainViewModel
+        viewBinding.shoeListViewModel = shoeListViewModel
+
+        shoeListViewModel.addShoeEvent.observe(viewLifecycleOwner, Observer { shouldAdd ->
+            if (shouldAdd) {
+                shoeListViewModel.markAddShoeEventComplete()
+                findNavController().navigate(ShoeListFragmentDirections.actionShoeListFragmentToShoeDetailFragment())
+            }
+        })
     }
 
     private fun showWelcomeMessage() {

@@ -14,6 +14,23 @@
             app:exitAnim="@anim/nav_default_exit_anim"
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
             app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+        <action
+            android:id="@+id/action_shoe_list_fragment_to_shoeDetailFragment"
+            app:destination="@id/shoeDetailFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
     </fragment>
     <include app:graph="@navigation/onboarding_nav_graph" />
+    <fragment
+        android:id="@+id/shoeDetailFragment"
+        android:name="github.informramiz.shoestore.view.shoedetail.ShoeDetailFragment"
+        android:label="@string/title_fragment_shoe_detail">
+        <argument
+            android:name="shoe"
+            android:defaultValue="@null"
+            app:argType="github.informramiz.shoestore.model.entities.Shoe"
+            app:nullable="true" />
+    </fragment>
 </navigation>
