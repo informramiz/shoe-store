@@ -6,7 +6,7 @@
     <fragment
         android:id="@+id/loginFragment"
         android:name="github.informramiz.shoestore.view.onboarding.login.LoginFragment"
-        android:label="LoginFragment" >
+        android:label="@string/title_fragment_login" >
         <action
             android:id="@+id/action_loginFragment_to_welcomeFragment"
             app:destination="@id/welcomeFragment"
@@ -20,7 +20,7 @@
     <fragment
         android:id="@+id/welcomeFragment"
         android:name="github.informramiz.shoestore.view.onboarding.welcome.WelcomeFragment"
-        android:label="WelcomeFragment" >
+        android:label="@string/title_fragment_welcome" >
         <action
             android:id="@+id/action_welcomeFragment_to_instructionsFragment"
             app:destination="@id/instructionsFragment"
@@ -29,6 +29,6 @@
     </fragment>
     <fragment
         android:id="@+id/instructionsFragment"
-        android:name="github.informramiz.shoestore.view.onboarding.InstructionsFragment"
-        android:label="InstructionsFragment" />
+        android:name="github.informramiz.shoestore.view.onboarding.instructions.InstructionsFragment"
+        android:label="@string/title_fragment_instructions" />
 </navigation>

@@ -9,6 +9,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import github.informramiz.shoestore.databinding.LoginFragmentBinding
+import github.informramiz.shoestore.model.preferences.ShoePreferences
 
 class LoginFragment : Fragment() {
 
@@ -33,7 +34,11 @@ class LoginFragment : Fragment() {
         viewModel.getAuthenticationState().observe(viewLifecycleOwner, Observer { state ->
             when (state) {
                 AuthenticationState.AUTHENTICATED -> {
-                    findNavController().popBackStack()
+                    if (ShoePreferences.App.shared.isWelcomeScreenShown) {
+                        findNavController().popBackStack()
+                    } else {
+                        findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToWelcomeFragment())
+                    }
                 }
                 else -> {
                     viewBinding.lifecycleOwner = this

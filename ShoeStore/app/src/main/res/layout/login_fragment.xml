@@ -4,7 +4,15 @@
     <data>
         <variable
             name="loginViewModel"
-            type="github.informramiz.shoestore.view.onboarding.login.LoginViewModel" />
+            type="github.informramiz.shoestore.view.onboarding.login.LoginViewModel"/>
+
+        <variable
+            name="email"
+            type="String" />
+
+        <variable
+            name="password"
+            type="String" />
     </data>
 
     <LinearLayout
@@ -26,6 +34,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
+            android:text="@={email}"
             android:inputType="textEmailAddress" />
 
         <TextView
@@ -40,6 +49,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
+            android:text="@={password}"
             android:inputType="textPassword" />
 
         <Button
@@ -48,13 +58,14 @@
             android:layout_height="wrap_content"
             android:text="@string/login_button_login"
             android:layout_marginTop="16dp"
-            android:onClick="@{() -> loginViewModel.dummy()}"/>
+            android:onClick="@{() -> loginViewModel.authenticateUser(email, password)}"/>
 
         <Button
             android:id="@+id/registerButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/login_button_register" />
+            android:text="@string/login_button_register"
+            android:onClick="@{() -> loginViewModel.authenticateUser(email, password)}"/>
 
     </LinearLayout>
 </layout>

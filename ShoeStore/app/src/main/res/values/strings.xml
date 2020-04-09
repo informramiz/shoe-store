@@ -1,16 +1,25 @@
 <resources>
-    <string name="app_name">ShoeStore</string>
+    <string name="app_name">Shoe Store</string>
+    <!--  ShoeList  -->
     <string name="label_shoes">Shoes</string>
+    <string name="shoe_list_fragment_welcome_msg">Welcome</string>
+
+    <!--  LoginFragment  -->
+    <string name="title_fragment_login">Login</string>
     <string name="login_label_email">Email</string>
     <string name="login_label_password">Password</string>
     <string name="login_button_login">Login</string>
     <string name="login_button_register">Register</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!--  WelcomeFragment  -->
+    <string name="title_fragment_welcome">Welcome</string>
     <string name="welcome_label_welcome_dear_user">Welcome dear user!</string>
     <string name="welcome_label_description_text">App will let you see the list of the shoes</string>
+
+    <!--  InstructionsFragment  -->
+    <string name="title_fragment_instructions">Instructions</string>
     <string name="instructions_label_instruction1">View shoe list in main screen</string>
     <string name="instructions_label_instruction2">Click the add button to add new shoe</string>
-    <string name="shoe_list_fragment_welcome_msg">Welcome</string>
+
+    <string name="label_next">Next</string>
 </resources>
