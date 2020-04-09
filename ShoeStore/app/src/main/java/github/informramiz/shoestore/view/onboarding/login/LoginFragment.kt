@@ -30,5 +30,7 @@ class LoginFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        viewBinding.lifecycleOwner = this
+        viewBinding.loginViewModel = viewModel
     }
 }
