@@ -21,8 +21,8 @@ class ShoeDetailViewModel(application: Application) : AndroidViewModel(applicati
         this.shoe.value = shoe ?: Shoe("")
     }
 
-    fun onSave(shoe: Shoe) {
-        if (shoe.name.isBlank() || shoe.company.isBlank() || shoe.size == 0.0) {
+    fun onSave(shoe: Shoe?) {
+        if (shoe == null || shoe.name.isBlank() || shoe.company.isBlank() || shoe.size == 0.0) {
             _addShoeEvent.value = AddShoeEvent.AddShoeError(
                 getApplication<ShoeApplication>().applicationContext
                     .getString(R.string.shoe_detail_fragment_add_shoe_error)

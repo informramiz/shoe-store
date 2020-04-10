@@ -37,27 +37,28 @@ class ShoeDetailFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         viewBinding.lifecycleOwner = viewLifecycleOwner
         viewBinding.viewModel = shoeDetailViewModel
+        viewBinding.shoe = Shoe()
+
 
         shoeDetailViewModel.setShoe(ShoeDetailFragmentArgs.fromBundle(arguments!!).shoe)
         shoeDetailViewModel.addShoeEvent.observe(viewLifecycleOwner, Observer { event ->
             event ?: return@Observer
-
             when (event) {
                 is AddShoeEvent.AddNewShoe -> {
                     mainViewModel.addShoe(event.shoe)
                     findNavController().popBackStack()
-                    Unit
+                    shoeDetailViewModel.markAddShoeEventComplete()
                 }
                 AddShoeEvent.AddShoeCompleted -> {}
                 is AddShoeEvent.AddShoeError -> {
                     Toast.makeText(requireContext(), event.error, Toast.LENGTH_SHORT).show()
+                    shoeDetailViewModel.markAddShoeEventComplete()
                 }
                 is AddShoeEvent.AddShoeCanceled -> {
                     findNavController().popBackStack()
-                    Unit
+                    shoeDetailViewModel.markAddShoeEventComplete()
                 }
             }.exhaustive
-            shoeDetailViewModel.markAddShoeEventComplete()
         })
     }
 }
