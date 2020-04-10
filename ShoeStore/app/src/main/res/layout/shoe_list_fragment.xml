@@ -13,6 +13,7 @@
             type="github.informramiz.shoestore.view.shoelist.ShoeListViewModel" />
     </data>
 
+<!--    Need to coordinator layout as it better fits with FAB button-->
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:id="@+id/coordinator"
         android:layout_width="match_parent"
@@ -32,6 +33,7 @@
             android:layout_height="match_parent"
             android:fillViewport="true">
 
+            <!--    As the layout is just vertical views of shoe items so LinearLayout is just fine-->
             <LinearLayout
                 android:id="@+id/shoesListLayout"
                 android:layout_width="match_parent"
