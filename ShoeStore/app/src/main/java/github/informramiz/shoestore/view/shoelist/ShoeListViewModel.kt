@@ -13,7 +13,7 @@ class ShoeListViewModel: ViewModel() {
     val addShoeEvent: LiveData<Boolean>
         get() = _addShoeEvent
 
-    fun addShoe(shoe: Shoe) {
+    fun addShoe() {
         _addShoeEvent.value = true
     }
 
