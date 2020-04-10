@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android" >
+    <data>
+        <variable
+            name="shoe"
+            type="github.informramiz.shoestore.model.entities.Shoe" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/nameTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{shoe.name}"/>
+
+        <TextView
+            android:id="@+id/companyTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{shoe.company}"/>
+
+        <TextView
+            android:id="@+id/sizeTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{String.valueOf(shoe.size)}"/>
+
+        <TextView
+            android:id="@+id/descriptionTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{shoe.description}"/>
+    </LinearLayout>
+</layout>

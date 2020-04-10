@@ -3,6 +3,7 @@ package github.informramiz.shoestore.view.shoelist
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import github.informramiz.shoestore.model.entities.Shoe
 
 /**
  * Created by Ramiz Raja on 10/04/2020
@@ -12,7 +13,7 @@ class ShoeListViewModel: ViewModel() {
     val addShoeEvent: LiveData<Boolean>
         get() = _addShoeEvent
 
-    fun addShoe() {
+    fun addShoe(shoe: Shoe) {
         _addShoeEvent.value = true
     }
 

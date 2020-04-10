@@ -4,9 +4,15 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import github.informramiz.shoestore.databinding.ShoeDetailFragmentBinding
+import github.informramiz.shoestore.model.entities.Shoe
+import github.informramiz.shoestore.view.home.MainViewModel
 
 class ShoeDetailFragment : Fragment() {
 
@@ -14,7 +20,9 @@ class ShoeDetailFragment : Fragment() {
         fun newInstance() = ShoeDetailFragment()
     }
 
-    private val viewModel: ShoeDetailViewModel by activityViewModels()
+    private val shoeDetailViewModel: ShoeDetailViewModel by viewModels()
+    private val mainViewModel: MainViewModel by activityViewModels()
+
     private lateinit var viewBinding: ShoeDetailFragmentBinding
 
     override fun onCreateView(
@@ -28,6 +36,28 @@ class ShoeDetailFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewBinding.lifecycleOwner = viewLifecycleOwner
-        viewBinding.viewModel = viewModel
+        viewBinding.viewModel = shoeDetailViewModel
+
+        shoeDetailViewModel.setShoe(ShoeDetailFragmentArgs.fromBundle(arguments!!).shoe)
+        shoeDetailViewModel.addShoeEvent.observe(viewLifecycleOwner, Observer { event ->
+            event ?: return@Observer
+
+            when (event) {
+                is AddShoeEvent.AddNewShoe -> {
+                    mainViewModel.addShoe(event.shoe)
+                    findNavController().popBackStack()
+                    Unit
+                }
+                AddShoeEvent.AddShoeCompleted -> {}
+                is AddShoeEvent.AddShoeError -> {
+                    Toast.makeText(requireContext(), event.error, Toast.LENGTH_SHORT).show()
+                }
+                is AddShoeEvent.AddShoeCanceled -> {
+                    findNavController().popBackStack()
+                    Unit
+                }
+            }.exhaustive
+            shoeDetailViewModel.markAddShoeEventComplete()
+        })
     }
 }

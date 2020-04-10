@@ -15,6 +15,8 @@ import androidx.navigation.fragment.findNavController
 import github.informramiz.shoestore.R
 import github.informramiz.shoestore.view.home.MainViewModel
 import github.informramiz.shoestore.databinding.ShoeListFragmentBinding
+import github.informramiz.shoestore.databinding.ShoeListItemLayoutBinding
+import github.informramiz.shoestore.model.entities.Shoe
 import github.informramiz.shoestore.view.onboarding.login.AuthenticationState
 import github.informramiz.shoestore.view.onboarding.login.LoginViewModel
 
@@ -56,6 +58,17 @@ class ShoeListFragment : Fragment() {
                 findNavController().navigate(ShoeListFragmentDirections.actionShoeListFragmentToShoeDetailFragment())
             }
         })
+
+        mainViewModel.getShoeList().observe(viewLifecycleOwner, Observer { shoeList ->
+            shoeList ?: return@Observer
+            viewBinding.shoesListLayout.removeAllViews()
+            shoeList.forEach { addShowView(it) }
+        })
+    }
+
+    private fun addShowView(shoe: Shoe) {
+        val shoeViewBinding = ShoeListItemLayoutBinding.inflate(layoutInflater, viewBinding.shoesListLayout, true)
+        shoeViewBinding.shoe = shoe
     }
 
     private fun showWelcomeMessage() {

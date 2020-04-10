@@ -17,6 +17,7 @@
         android:fillViewport="true"
         tools:context=".view.shoedetail.ShoeDetailFragment">
 
+        <!--    This is a complex UI and cant be handled by LinearLayout constraint layout makes sense    -->
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -37,6 +38,7 @@
                 android:ems="10"
                 android:importantForAutofill="no"
                 android:inputType="textPersonName"
+                android:text="@={viewModel.shoe.name}"
                 app:layout_constraintBottom_toTopOf="@+id/textViewCompany"
                 app:layout_constraintTop_toBottomOf="@+id/textViewName"
                 tools:layout_editor_absoluteX="0dp" />
@@ -57,6 +59,7 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:inputType="textPersonName"
+                android:text="@={viewModel.shoe.company}"
                 app:layout_constraintBottom_toTopOf="@+id/textViewDescription"
                 app:layout_constraintTop_toBottomOf="@+id/textViewCompany"
                 tools:layout_editor_absoluteX="16dp" />
@@ -78,6 +81,7 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:inputType="textPersonName"
+                android:text="@={viewModel.shoe.description}"
                 app:layout_constraintBottom_toTopOf="@+id/textViewSize"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -85,7 +89,7 @@
 
             <TextView
                 android:id="@+id/textViewSize"
-                android:layout_width="377dp"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="@string/shoe_detail_fragment_size_label"
                 app:layout_constraintBottom_toTopOf="@+id/editTextSize"
@@ -99,10 +103,10 @@
                 android:layout_width="377dp"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="number"
+                android:inputType="numberDecimal"
+                android:text="@={String.valueOf(viewModel.shoe.size)}"
                 app:layout_constraintBottom_toTopOf="@+id/buttonSave"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textViewSize" />
 
@@ -114,6 +118,7 @@
                 android:background="@color/colorAccent"
                 android:text="@string/shoe_detail_fragment_save_button"
                 android:textColor="@android:color/white"
+                android:onClick="@{() -> viewModel.onSave()}"
                 app:layout_constraintEnd_toStartOf="@+id/buttonCancel"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/editTextSize" />
@@ -123,6 +128,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/shoe_detail_fragment_cancel_button"
+                android:onClick="@{() -> viewModel.onCancel()}"
                 app:layout_constraintBaseline_toBaselineOf="@+id/buttonSave"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/buttonSave" />
