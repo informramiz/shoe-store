@@ -19,6 +19,7 @@ import github.informramiz.shoestore.databinding.ShoeListItemLayoutBinding
 import github.informramiz.shoestore.model.entities.Shoe
 import github.informramiz.shoestore.view.onboarding.login.AuthenticationState
 import github.informramiz.shoestore.view.onboarding.login.LoginViewModel
+import kotlinx.android.synthetic.main.shoe_list_item_layout.view.*
 
 class ShoeListFragment : Fragment() {
 
@@ -67,8 +68,9 @@ class ShoeListFragment : Fragment() {
     }
 
     private fun addShowView(shoe: Shoe) {
-        val shoeViewBinding = ShoeListItemLayoutBinding.inflate(layoutInflater, viewBinding.shoesListLayout, true)
+        val shoeViewBinding = ShoeListItemLayoutBinding.inflate(layoutInflater, null, false)
         shoeViewBinding.shoe = shoe
+        viewBinding.shoesListLayout.addView(shoeViewBinding.root.rootView, 0)
     }
 
     private fun showWelcomeMessage() {
