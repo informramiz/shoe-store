@@ -42,7 +42,7 @@ class LoginFragment : Fragment() {
                         findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToWelcomeFragment())
                     }
                 }
-                AuthenticationState.AUTHENTICATION_REFUSED -> findNavController().popBackStack()
+                AuthenticationState.AUTHENTICATION_REFUSED -> requireActivity().finish()
                 else -> {
                     viewBinding.lifecycleOwner = this
                     viewBinding.loginViewModel = viewModel
