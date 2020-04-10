@@ -43,6 +43,7 @@ class ShoeListFragment : Fragment() {
         loginViewModel.getAuthenticationState().observe(viewLifecycleOwner, Observer { state ->
             when(state) {
                 AuthenticationState.AUTHENTICATED -> showWelcomeMessage()
+                AuthenticationState.AUTHENTICATION_REFUSED -> findNavController().popBackStack()
                 else -> findNavController().navigate(R.id.onboarding_nav_graph)
             }
         })
@@ -78,6 +79,11 @@ class ShoeListFragment : Fragment() {
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
         inflater.inflate(R.menu.menu_shoe_list_fragment, menu)
+    }
+
+    override fun onPrepareOptionsMenu(menu: Menu) {
+        super.onPrepareOptionsMenu(menu)
+        menu.findItem(R.id.action_logout).isVisible = loginViewModel.getAuthenticationState().value!! == AuthenticationState.AUTHENTICATED
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

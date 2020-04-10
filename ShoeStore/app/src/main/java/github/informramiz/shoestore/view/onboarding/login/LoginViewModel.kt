@@ -31,6 +31,10 @@ class LoginViewModel(application: Application) : AndroidViewModel(application) {
         userAuthenticationStateUpdated()
     }
 
+    fun authenticationRefused() {
+        authenticationState.value = AuthenticationState.AUTHENTICATION_REFUSED
+    }
+
     private fun Boolean.toAuthenticationState(): AuthenticationState {
         return if (this) AuthenticationState.AUTHENTICATED else AuthenticationState.UNAUTHENTICATED
     }

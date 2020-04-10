@@ -5,5 +5,6 @@ package github.informramiz.shoestore.view.onboarding.login
  */
 enum class AuthenticationState {
     AUTHENTICATED,
-    UNAUTHENTICATED
+    UNAUTHENTICATED,
+    AUTHENTICATION_REFUSED
 }
