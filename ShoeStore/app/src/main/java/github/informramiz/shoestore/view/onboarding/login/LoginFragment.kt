@@ -6,10 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.addCallback
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import github.informramiz.shoestore.R
 import github.informramiz.shoestore.databinding.LoginFragmentBinding
 import github.informramiz.shoestore.model.preferences.ShoePreferences
 
@@ -26,7 +28,7 @@ class LoginFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        viewBinding = LoginFragmentBinding.inflate(layoutInflater, container, false)
+        viewBinding = DataBindingUtil.inflate(layoutInflater, R.layout.login_fragment, container, false)
         return viewBinding.root
     }
 

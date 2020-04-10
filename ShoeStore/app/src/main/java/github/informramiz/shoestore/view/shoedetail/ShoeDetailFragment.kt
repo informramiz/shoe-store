@@ -5,11 +5,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import github.informramiz.shoestore.R
 import github.informramiz.shoestore.databinding.ShoeDetailFragmentBinding
 import github.informramiz.shoestore.model.entities.Shoe
 import github.informramiz.shoestore.view.home.MainViewModel
@@ -29,7 +31,7 @@ class ShoeDetailFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        viewBinding = ShoeDetailFragmentBinding.inflate(inflater, container, false)
+        viewBinding = DataBindingUtil.inflate(inflater, R.layout.shoe_detail_fragment, container, false)
         return viewBinding.root
     }
 

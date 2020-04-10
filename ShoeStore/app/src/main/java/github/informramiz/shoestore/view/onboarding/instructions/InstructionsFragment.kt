@@ -4,10 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import github.informramiz.shoestore.R
 import github.informramiz.shoestore.databinding.InstructionsFragmentBinding
 
 class InstructionsFragment : Fragment() {
@@ -24,7 +26,7 @@ class InstructionsFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        viewBinding = InstructionsFragmentBinding.inflate(inflater, container, false)
+        viewBinding = DataBindingUtil.inflate(inflater, R.layout.instructions_fragment, container, false)
         return viewBinding.root
     }
 

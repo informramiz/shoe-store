@@ -67,7 +67,7 @@ class ShoeListFragment : Fragment() {
     }
 
     private fun addShowView(shoe: Shoe) {
-        val shoeViewBinding = ShoeListItemLayoutBinding.inflate(layoutInflater, null, false)
+        val shoeViewBinding = DataBindingUtil.inflate<ShoeListItemLayoutBinding>(layoutInflater, R.layout.shoe_list_item_layout,null, false)
         shoeViewBinding.shoe = shoe
         viewBinding.shoesListLayout.addView(shoeViewBinding.root.rootView, 0)
     }
