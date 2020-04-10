@@ -18,4 +18,8 @@ class AppPreferences(private val sharedPreferences: SharedPreferences) {
                 putBoolean(IS_WELCOME_SCREEN_SHOWN, value)
             }
         }
+
+    fun clear() {
+        sharedPreferences.edit { clear() }
+    }
 }

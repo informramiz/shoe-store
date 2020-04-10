@@ -2,9 +2,7 @@ package github.informramiz.shoestore.view.shoelist
 
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
@@ -19,7 +17,6 @@ import github.informramiz.shoestore.databinding.ShoeListItemLayoutBinding
 import github.informramiz.shoestore.model.entities.Shoe
 import github.informramiz.shoestore.view.onboarding.login.AuthenticationState
 import github.informramiz.shoestore.view.onboarding.login.LoginViewModel
-import kotlinx.android.synthetic.main.shoe_list_item_layout.view.*
 
 class ShoeListFragment : Fragment() {
 
@@ -37,6 +34,7 @@ class ShoeListFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         viewBinding = DataBindingUtil.inflate(inflater, R.layout.shoe_list_fragment, container, false)
+        setHasOptionsMenu(true)
         return viewBinding.root
     }
 
@@ -75,5 +73,20 @@ class ShoeListFragment : Fragment() {
 
     private fun showWelcomeMessage() {
         Toast.makeText(context, getString(R.string.shoe_list_fragment_welcome_msg), Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.menu_shoe_list_fragment, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.action_logout -> {
+                loginViewModel.logout()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 }

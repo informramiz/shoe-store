@@ -18,4 +18,9 @@ object ShoePreferences {
     fun init(context: Context) {
         ShoePreferences.context = context
     }
+
+    fun clear() {
+        ShoePreferences.App.shared.clear()
+        ShoePreferences.User.shared.clear()
+    }
 }

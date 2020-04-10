@@ -18,4 +18,8 @@ class UserPreferences(private val sharedPreferences: SharedPreferences) {
                 putBoolean(IS_USER_LOGGED_IN, value)
             }
         }
+
+    fun clear() {
+        sharedPreferences.edit { clear() }
+    }
 }

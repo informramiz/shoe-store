@@ -17,12 +17,17 @@ class LoginViewModel(application: Application) : AndroidViewModel(application) {
         return authenticationState
     }
 
-    fun userAuthenticationStateUpdated() {
+    private fun userAuthenticationStateUpdated() {
         authenticationState.value = ShoePreferences.User.shared.isUserLoggedIn.toAuthenticationState()
     }
 
     fun authenticateUser(userName: String?, password: String?) {
         ShoePreferences.User.shared.isUserLoggedIn = true
+        userAuthenticationStateUpdated()
+    }
+
+    fun logout() {
+        ShoePreferences.clear()
         userAuthenticationStateUpdated()
     }
 
